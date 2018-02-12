@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+
+</head>
+<body>
+
+<div class="row content">
+    <div class="col-sm-8 text-left">
+        <a href="/editor/">add</a>
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>Title</td>
+                <td>Description</td>
+                <td>Date</td>
+            </tr>
+
+            <div th:each="advert : ${adverts}">
+                <tr>
+                    <td><a th:href="@{/adverts/{advId}(advId=${advert.id})}"><p th:text="${advert.id}"/></a></td>
+                    <td><p th:text="${advert.title}"/></td>
+                    <td><p th:text="${advert.description}"/></td>
+                    <td><p th:text="${advert.dateOfCreated}"/></td>
+                    <td><a th:href="@{/delete/{advId}(advId=${advert.id})}"><p>Delete</p></a></td>
+                    <td><a th:href="@{/update/{advId}(advId=${advert.id})}"><p>Update</p></a></td>
+                </tr>
+
+            </div>
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>

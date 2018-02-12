@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title><p th:text="${advert.id}"/>Advert</title>
+</head>
+<body>
+<h2>Advert</h2>
+    <table>
+        <tr>
+            <td>Id</td>
+            <td><p th:text="${advert.id}"/></td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td><p th:text="${advert.title}"/></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><p th:text="${advert.description}"/></td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td><p th:text="${advert.dateOfCreated}"/></td>
+        </tr>
+    </table>
+
+<a href="/">Back</a>
+</body>
+</html>
