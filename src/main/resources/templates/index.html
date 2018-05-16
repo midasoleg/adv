@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8" />
+    <!-- <base href="/"> -->
+
+    <title>MWell</title>
+    <meta name="description" content="" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Template Basic Images Start -->
+    <meta property="og:image" content="path/to/image.jpg" />
+    <link rel="icon" href="img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.svg" />
+    <!-- Template Basic Images End -->
+
+    <!-- Custom Browsers Color Start -->
+    <meta name="theme-color" content="#000" />
+    <!-- Custom Browsers Color End -->
+
+    <!--Bootstrap grid-->
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="css/main.min.css" />
+    <!--Fonts Google Roboto-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=cyrillic" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<!-- Custom HTML -->
+
+<header class="main-head">
+    <div class="container">
+        <div class="top-line col">
+            <div class="row justify-content-between align-items-center">
+
+                <div class="col-md-auto">
+                    <div class="logo">
+                        <a href="#"><img src="img/logo-bot.png" alt="MW"/></a>
+
+                    </div>
+                </div>
+
+                <div class="col-md-auto">
+                    <nav class="top-line-menu text-center">
+                        <ul>
+                            <li><a href="#">Куплю</a></li>
+                            <li><a href="#">Продам</a></li>
+                            <li><a href="#">Аренда</a></li>
+                            <li><a href="#">О нас</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-md-auto header-button text-center">
+                    <a href="/editor/">Подать объявление</a>
+                </div>
+
+                <div class="col-md-auto">
+                    <div class="user-login text-center">
+                        <a href="#"><i class="icon-guest"></i>
+                            Вход</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="map"></div>
+</header>
+
+<div class="container">
+    <div class="page-bar">
+        <div class="row justify-content-between">
+
+            <div class="col-auto">
+                <div class="pages">
+                    <a href="#">Все</a>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <div class="pages">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="advert-list">
+        <div class="row">
+            <div class="col-md-6 col-sm col-xs" th:each="advert : ${adverts}">
+                <div class="advert">
+
+                    <div class="advert-title">
+                        <a th:href="@{/adverts/{advId}(advId=${advert.id})}">
+                            <h4 th:text="${advert.title}"></h4>
+                        </a>
+
+                    </div>
+
+                    <div class="advert-info">
+                        <figure>
+                            <a href="#"><img  class="img-responsive" src="img/507144622_1_644x461_prodam-gostinku-harkov.png" alt=""/></a>
+                        </figure>
+                        <div class="advert-description">
+                            <p th:text="${advert.description}"></p>
+
+                        </div>
+                    </div>
+                    <div class="advert-date">
+                            <span>
+                            ID:<p th:text="${advert.id}"></p>
+                           </span>
+                        <span>
+                            Date:<p th:text="${advert.dateOfCreated}"></p>
+                           </span>
+                    </div>
+                    <div class="advert-bot-line">
+                            <span>
+                        <i class="icon-codepen"></i>40m</span>
+                        <span>
+                        <i class="icon-bed"></i>2</span>
+                        <span>
+                        <i class="icon-buffer"></i>3/4</span>
+                        <div class="advert-bot-line-price">
+                            <span><i class="icon-dollar"></i>50 000</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.advert-->
+            </div>
+            <!-- /.col-->
+        </div>
+        <!-- /.row-->
+    </div>
+    <!-- /.advert-list -->
+
+
+    <div class="page-bar">
+        <div class="row justify-content-between">
+
+            <div class="col-auto">
+                <div class="pages">
+                    <a href="#">Все</a>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <div class="pages">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="footer-contacts">
+                    <p class="footer-contacts-phones">
+                        +380 222 22 222
+                    </p>
+                    <p class="footer-contacts-email">
+                        <i class="icon-mail"></i>mw@gmail.com
+                    </p>
+                    <div class="footer-contacts-social">
+                        <ul>
+                            <li><a href="#"><i class="icon-facebook"></i></a></li>
+                            <li><a href="#"><i class="icon-instagram"></i></a></li>
+                            <li><a href="#"><i class="icon-whatsapp"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <nav class="footer-menu text-center">
+                    <ul>
+                        <li><a class="logo img-responsive" href="#"><img src="img/logo.png" alt=""/></a></li>
+                        <li><a href="#">Куплю</a></li>
+                        <li><a href="#">Продам</a></li>
+                        <li><a href="#">Аренда</a></li>
+                        <li><a href="#">О нас</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col">
+                <div class="footer-copy">
+                    <p>Copyright © 2018 All Rights Reserved</p>
+                    <a class="footer-link" href="#">Политика конфиденциальности</a>
+                    <small>Данное соглашение о конфиденциальности разработано в соответствии с требованиями Закона Украины № 2297 от 01.06.2010г. «О защите персональных данных» и иных нормативных актов украинского законодательства, регламентирующих правовые отношения, связанные со сбором, обработкой, хранением  персональных данных, а также правом граждан на невмешательство в личную жизнь и правом на самовыражение.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+
+<!--JS-->
+<script src="js/scripts.min.js"></script>
+
+<!--Google map-->
+<script>
+    function initMap() {
+        var styledMapType = new google.maps.StyledMapType(
+            [{
+                "elementType": "geometry",
+                "stylers": [{
+                    "color": "#f5f5f5"
+                }]
+            },
+                {
+                    "elementType": "labels.icon",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                },
+                {
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#616161"
+                    }]
+                },
+                {
+                    "elementType": "labels.text.stroke",
+                    "stylers": [{
+                        "color": "#f5f5f5"
+                    }]
+                },
+                {
+                    "featureType": "administrative.land_parcel",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#bdbdbd"
+                    }]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#eeeeee"
+                    }]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#757575"
+                    }]
+                },
+                {
+                    "featureType": "poi.park",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#e5e5e5"
+                    }]
+                },
+                {
+                    "featureType": "poi.park",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#9e9e9e"
+                    }]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#ffffff"
+                    }]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#757575"
+                    }]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#dadada"
+                    }]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#616161"
+                    }]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#9e9e9e"
+                    }]
+                },
+                {
+                    "featureType": "transit.line",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#e5e5e5"
+                    }]
+                },
+                {
+                    "featureType": "transit.station",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#eeeeee"
+                    }]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#c9c9c9"
+                    }]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#9e9e9e"
+                    }]
+                }
+            ], {
+                name: 'Styled Map'
+            });
+
+        var uluru = {
+            lat: 49.992741,
+            lng: 36.234320
+        };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 13,
+            center: uluru
+        });
+        /*            var marker = new google.maps.Marker({
+         position: uluru,
+         map: map
+         });*/
+
+        //Associate the styled map with the MapTypeId and set it to display.
+        map.mapTypes.set('styled_map', styledMapType);
+        map.setMapTypeId('styled_map');
+    }
+
+</script>
+<!--Google map-->
+<script async='async' defer='defer' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeU9bZ_7rjIw74laNnkAYGrfD-0bpLZiM&amp;callback=initMap"></script>
+
+</body>
+
+</html>
