@@ -17,8 +17,14 @@ public class AdvertController {
     @RequestMapping
     public String getAllAdverts(Model model){
         model.addAttribute("adverts", advertService.getAllAdverts());
-        return "adverts/all";
+        return "index";
     }
+
+//    @RequestMapping
+//    public String getAllAdverts(Model model){
+//        model.addAttribute("adverts", advertService.getAllAdverts());
+//        return "adverts/all";
+//    }
 
     @RequestMapping(value = "/editor")
     public String editorPage(Model model){

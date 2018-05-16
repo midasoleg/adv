@@ -1,34 +1,235 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+
+    <meta charset="utf-8" />
+    <!-- <base href="/"> -->
+
+    <title>MWell</title>
+    <meta name="description" content="" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Template Basic Images Start -->
+    <meta property="og:image" content="path/to/image.jpg" />
+    <link rel="icon" href="img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.svg" />
+    <!-- Template Basic Images End -->
+
+    <!-- Custom Browsers Color Start -->
+    <meta name="theme-color" content="#000" />
+    <!-- Custom Browsers Color End -->
+
+    <!--Bootstrap grid-->
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="css/main.min.css" />
+    <!--Fonts Google Roboto-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=cyrillic" rel="stylesheet" />
 
 </head>
+
 <body>
-<div class="container-fluid text-center">
-    <div class="row content">
-        <div class="col-sm-8 text-left">
-            <form action="#" th:action="@{/editor/add}" th:object="${advert}" method="post">
-                <h3>Add advert</h3>
-                <div class="form-group">
-                    <label for="title">Заголовок</label>
-                    <input type="text" class="form-control" id="title" th:field="*{title}"/>
-                </div>
-                <div class="form-group">
-                    <label for="description">Описание</label>
-                    <textarea class="form-control" name="description" id="description" cols="5" rows="5"
-                              th:field="*{description}"></textarea>
+
+<!-- Custom HTML -->
+
+<header class="main-head">
+    <div class="container">
+        <div class="top-line col">
+            <div class="row justify-content-between align-items-center">
+
+                <div class="col-md-auto">
+                    <div class="logo">
+                        <a href="#"><img src="img/logo-bot.png" alt="MW"/></a>
+
+                    </div>
                 </div>
 
-                <button type="submit" class="btn-success">Добавить</button>
-            </form>
+                <div class="col-md-auto">
+                    <nav class="top-line-menu text-center">
+                        <ul>
+                            <li><a href="#">Куплю</a></li>
+                            <li><a href="#">Продам</a></li>
+                            <li><a href="#">Аренда</a></li>
+                            <li><a href="#">О нас</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-md-auto header-button text-center">
+                    <a href="#">Подать объявление</a>
+                </div>
+
+                <div class="col-md-auto">
+                    <div class="user-login text-center">
+                        <a href="#"><i class="icon-guest"></i>
+                            Вход</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </div>
+    <!--        <div id="map"></div>-->
+</header>
+
+<div class="container">
+    <div class="forms">
+
+        <form action="#" th:action="@{/editor/add}" th:object="${advert}" method="post">
+            <h2>Подать объявление</h2>
+
+            <div class="brtop">
+                <fieldset>
+                    <legend>Данные</legend>
+                    <div id="title" class="fblock">
+                        <div class="label fleft tright">
+                            <label for="adv-title">Заголовок</label>
+                        </div>
+                        <div>
+                            <input type="text" id="adv-title" th:field="*{title}"/>
+                        </div>
+                    </div><br/>
+
+                    <div id="categories" class="fblock">
+                        <div class="label fleft tright">
+                            <label for="adv-categories">Категория</label>
+                        </div>
+                        <div>
+                            <select name="" id="adv-categories">
+                                <option value="" disabled="disabled" selected="selected">Выберите категорию</option>
+                                <option value="1">Продам</option>
+                                <option value="2">Куплю</option>
+                                <option value="3">Аренда</option>
+                            </select>
+                        </div>
+                    </div><br/>
+
+                    <div id="description" class="fblock">
+                        <div class="label fleft tright">
+                            <label for="adv-description">Описание</label>
+                        </div>
+                        <div>
+                            <textarea name="" id="adv-description" cols="80" rows="3" style="resize: none" th:field="*{description}"></textarea>
+                        </div>
+                    </div><br/>
+
+                    <div id="photo">
+                        <div class="label fleft tright">
+                            <label for="adv-photo">Фото</label>
+                        </div>
+                        <div id="form-inputs" class="fblock">
+                            <div id="input1">
+                                <input type="file"/>
+                            </div>
+                            <div id="input2">
+                                <input type="file"/>
+                            </div>
+                            <div id="input3">
+                                <input type="file"/>
+                            </div>
+                        </div>
+                    </div><br/>
+
+                    <div id="price" class="fblock">
+                        <div class="label fleft tright">
+                            <label for="adv-price">Цена</label>
+                        </div>
+                        <div>
+                            <input type="number" id="adv-price"/>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+            <div class="brtop">
+                <fieldset>
+                    <legend>
+                        Ваши контакты
+                    </legend>
+                    <div id="phone" class="fblock">
+                        <div class="label fleft tright">
+                            <label for="adv-phone">Номер телефона</label>
+                        </div>
+                        <div>
+                            <input type="number" id="adv-phone"/>
+                        </div>
+                    </div><br/>
+                    <div id="email">
+                        <div class="label fleft tright">
+                            <label for="adv-email">Email</label>
+                        </div>
+                        <div>
+                            <input type="email" id="adv-email"/>
+                        </div>
+                    </div><br/>
+                    <div id="author">
+                        <div class="label fleft tright">
+                            <label for="adv-author">Контактное лицо</label>
+                        </div>
+                        <div>
+                            <input type="text" id="adv-author"/>
+                        </div>
+                    </div><br/>
+                </fieldset>
+            </div>
+            <button type="submit">Отправить</button>
+        </form>
+
     </div>
 </div>
 
+
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="footer-contacts">
+                    <p class="footer-contacts-phones">
+                        +380 222 22 222
+                    </p>
+                    <p class="footer-contacts-email">
+                        <i class="icon-mail"></i>mw@gmail.com
+                    </p>
+                    <div class="footer-contacts-social">
+                        <ul>
+                            <li><a href="#"><i class="icon-facebook"></i></a></li>
+                            <li><a href="#"><i class="icon-instagram"></i></a></li>
+                            <li><a href="#"><i class="icon-whatsapp"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <nav class="footer-menu text-center">
+                    <ul>
+                        <li><a class="logo img-responsive" href="#"><img src="img/logo.png" alt=""/></a></li>
+                        <li><a href="#">Куплю</a></li>
+                        <li><a href="#">Продам</a></li>
+                        <li><a href="#">Аренда</a></li>
+                        <li><a href="#">О нас</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col">
+                <div class="footer-copy">
+                    <p>Copyright © 2018 All Rights Reserved</p>
+                    <a class="footer-link" href="#">Политика конфиденциальности</a>
+                    <small>Данное соглашение о конфиденциальности разработано в соответствии с требованиями Закона Украины № 2297 от 01.06.2010г. «О защите персональных данных» и иных нормативных актов украинского законодательства, регламентирующих правовые отношения, связанные со сбором, обработкой, хранением  персональных данных, а также правом граждан на невмешательство в личную жизнь и правом на самовыражение.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!--JS-->
+<script src="js/scripts.min.js"></script>
+
 </body>
+
 </html>
