@@ -1,6 +1,8 @@
 package com.managerAdv.adv.controller;
 
 import com.managerAdv.adv.entity.Advert;
+import com.managerAdv.adv.entity.AdvertCategory;
+import com.managerAdv.adv.service.Impl.AdvertCategoryServiceImpl;
 import com.managerAdv.adv.service.Impl.AdvertServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,9 @@ public class AdvertController {
 
     @Autowired
     private AdvertServiceImpl advertService;
+
+    @Autowired
+    private AdvertCategoryServiceImpl advertCategoryService;
 
     @RequestMapping
     public String getAllAdverts(Model model){
@@ -34,6 +39,8 @@ public class AdvertController {
 
     @RequestMapping(value = "/editor/add")
     public String addAdvert(@ModelAttribute Advert advert){
+        AdvertCategory advertCategory = advertCategoryService.getAdvCategoryById(advert.getAdvertCategory().getIdCategory());
+        advert.setAdvertCategory(advertCategory);
         advertService.createAdvert(advert);
         return "redirect:../";
     }

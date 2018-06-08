@@ -24,8 +24,8 @@
     <!-- Custom Browsers Color End -->
 
     <!--Bootstrap grid-->
-    <link rel="stylesheet" href="css/bootstrap-grid.min.css" />
-    <link rel="stylesheet" href="css/main.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/css/main.min.css" />
     <!--Fonts Google Roboto-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=cyrillic" rel="stylesheet" />
 
@@ -42,7 +42,7 @@
 
                 <div class="col-md-auto">
                     <div class="logo">
-                        <a href="#"><img src="img/logo-bot.png" alt="MW"/></a>
+                        <a href="#"><img src="/img/logo-bot.png" alt="MW"/></a>
 
                     </div>
                 </div>
@@ -98,8 +98,8 @@
                             <label for="adv-categories">Категория</label>
                         </div>
                         <div>
-                            <select name="" id="adv-categories">
-                                <option value="" disabled="disabled" selected="selected">Выберите категорию</option>
+                            <select name="" id="adv-categories" th:field="*{advertCategory.idCategory}">
+                                <option value="" selected="selected" disabled="disabled">Выберите категорию</option>
                                 <option value="1">Продам</option>
                                 <option value="2">Куплю</option>
                                 <option value="3">Аренда</option>
@@ -207,7 +207,7 @@
             <div class="col">
                 <nav class="footer-menu text-center">
                     <ul>
-                        <li><a class="logo img-responsive" href="#"><img src="img/logo.png" alt=""/></a></li>
+                        <li><a class="logo img-responsive" href="#"><img src="/img/logo.png" alt=""/></a></li>
                         <li><a href="#">Куплю</a></li>
                         <li><a href="#">Продам</a></li>
                         <li><a href="#">Аренда</a></li>
@@ -228,7 +228,7 @@
 </footer>
 
 <!--JS-->
-<script src="js/scripts.min.js"></script>
+<script src="/js/scripts.min.js"></script>
 
 </body>
 
